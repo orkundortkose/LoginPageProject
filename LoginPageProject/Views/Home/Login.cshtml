@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<style>
+    body {
+        background-color: #f8f8f8;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .login-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-title {
+        font-size: 2rem;
+        color: #8b4513;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .login-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .login-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #8B0000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .login-button:hover {
+            background-color: #ffd700;
+        }
+
+    .error-message {
+        color: red;
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="login-container">
+        <h2 class="login-title">Login</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+            <div>
+                @Html.Label("Username")
+                @Html.TextBox("username", null, new { @class = "login-input" })
+            </div>
+
+            <div>
+                @Html.Label("Password")
+                @Html.Password("password", null, new { @class = "login-input" })
+            </div>
+
+            <div>
+                <input type="submit" value="Login" class="login-button" />
+            </div>
+
+            @if (!string.IsNullOrEmpty(ViewBag.Error))
+            {
+                <div class="error-message">@ViewBag.Error</div>
+            }
+        }
+    </div>
+
+}
