@@ -3,6 +3,8 @@
     ViewBag.Title = "Login";
 }
 
+@model LoginViewModel
+
 <h2>Login</h2>
 <style>
     body {
@@ -70,12 +72,12 @@
 
             <div>
                 @Html.Label("Username")
-                @Html.TextBox("username", null, new { @class = "login-input" })
+                @Html.TextBox("UserName", null, new { @class = "login-input" })
             </div>
 
             <div>
                 @Html.Label("Password")
-                @Html.Password("password", null, new { @class = "login-input" })
+                @Html.Password("Password", null, new { @class = "login-input" })
             </div>
 
             <div>
